@@ -17,6 +17,9 @@ def set_github_action_output(output_name, output_value) -> None:
 
 
 def main() -> None:
+    for key, value in os.environ.items():
+        print(f"{key}: {value}")
+
     who_to_greet = os.environ.get("args")
 
     print(f"Hello {who_to_greet}")
