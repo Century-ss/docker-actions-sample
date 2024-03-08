@@ -20,7 +20,7 @@ def main() -> None:
     for key, value in os.environ.items():
         print(f"{key}: {value}")
 
-    who_to_greet = os.environ.get("args")
+    who_to_greet = os.environ.get("INPUT_WHO-TO-GREET")
 
     print(f"Hello {who_to_greet}")
 
