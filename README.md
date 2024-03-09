@@ -7,7 +7,7 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 
 ## Inputs
 
-## `who-to-greet`
+## `who_to_greet`
 
 **Required** The name of the person to greet. Default `"World"`.
 
@@ -21,4 +21,10 @@ The time we greeted you.
 
 uses: actions/hello-world-docker-action@v2
 with:
-  who-to-greet: 'Mona the Octocat'
+  who_to_greet: 'Mona the Octocat'
+
+## Command
+- `pipenv run pip freeze > requirements.txt`でrequirements.txtを作成
+
+## TODO
+- rye使う？
