@@ -25,7 +25,8 @@ def main() -> None:
         print(f"{key}: {value}")
     print("↑Environment Variables--------------")
 
-    requests.get("https://example.com/")
+    response = requests.get("https://example.com/")
+    print(f"stats code: {response.status_code}")
 
     who_to_greet = os.environ.get("INPUT_WHO_TO_GREET")
 
