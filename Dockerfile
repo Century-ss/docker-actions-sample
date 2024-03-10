@@ -1,26 +1,30 @@
+############################################
+# setup
+############################################
+
 FROM python:3.10.1-buster
 
 COPY main.py /main.py
 
-"""
-pip
-"""
+############################################
+# 1. pip
+############################################
 # COPY requirements.txt /requirements.txt
 # RUN pip install -r requirements.txt
 
 
-"""
-pipenv
-"""
+############################################
+# 2. pipenv
+############################################
 COPY Pipfile.lock /Pipfile.lock
 COPY Pipfile /Pipfile
 RUN pip install pipenv
 RUN pipenv sync --system
 
 
-"""
-ENTRYPOINT
-"""
+############################################
+# Entrypoint
+############################################
 ENTRYPOINT ["python", "/main.py"]
 # ENTRYPOINT ["/main.py"]で実行するときは、以下のエラーが出るため、「RUN chmod +x main.py」で直前に権限を与える必要がある
 # docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed:
