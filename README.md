@@ -23,8 +23,6 @@ uses: actions/hello-world-docker-action@v2
 with:
   who_to_greet: 'Mona the Octocat'
 
-## Command
-- `pipenv run pip freeze > requirements.txt`でrequirements.txtを作成
-
-## TODO
-- rye使う？
+## requirements.txtの生成コマンド
+- pipenv：`pipenv run pip freeze > requirements.txt`
+- rye：`sed '/-e/d' requirements.lock > requirements.txt`
