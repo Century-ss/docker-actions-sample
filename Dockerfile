@@ -7,19 +7,26 @@ FROM python:3.10.1-buster
 COPY main.py /main.py
 
 ############################################
-# 1. pip
+# 1. pip 28[second]
 ############################################
 # COPY requirements.txt /requirements.txt
 # RUN pip install -r requirements.txt
 
 
 ############################################
-# 2. pipenv
+# 2. pipenv 38[second]
 ############################################
-COPY Pipfile.lock /Pipfile.lock
-COPY Pipfile /Pipfile
-RUN pip install pipenv
-RUN pipenv sync --system
+# COPY Pipfile.lock /Pipfile.lock
+# COPY Pipfile /Pipfile
+# RUN pip install pipenv
+# RUN pipenv sync --system
+
+############################################
+# 3. rye ??[second]
+############################################
+RUN curl -sSf https://rye-up.com/get | RYE_NO_AUTO_INSTALL=1 RYE_INSTALL_OPTION="--yes" bash
+RUN rye sync --no-dev --no-lock
+RUN . .venv/bin/activate
 
 
 ############################################
