@@ -25,6 +25,7 @@ COPY main.py /main.py
 ############################################
 # 3. rye ??[second]
 ############################################
+COPY requirements.lock /requirements.lock
 COPY pyproject.toml /pyproject.toml
 ENV RYE_HOME="/opt/rye"
 ENV PATH="$RYE_HOME/shims:$PATH"
