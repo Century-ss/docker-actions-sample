@@ -25,11 +25,12 @@ COPY main.py /main.py
 ############################################
 # 3. rye ??[second]
 ############################################
+ENV RYE_HOME="/opt/rye"
+ENV PATH="$RYE_HOME/shims:$PATH"
+ENV PYTHONPATH="$RYE_HOME/shims/python:$PYTHONPATH"
 COPY requirements.lock /requirements.lock
 COPY pyproject.toml /pyproject.toml
 COPY README.md /README.md
-ENV RYE_HOME="/opt/rye"
-ENV PATH="$RYE_HOME/shims:$PATH"
 RUN curl -sSf https://rye-up.com/get | RYE_NO_AUTO_INSTALL=1 RYE_INSTALL_OPTION="--yes" bash
 RUN rye sync --no-dev --no-lock
 RUN . .venv/bin/activate
