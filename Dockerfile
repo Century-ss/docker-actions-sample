@@ -11,6 +11,7 @@ COPY main.py /main.py
 ############################################
 # COPY requirements.txt /requirements.txt
 # RUN pip install -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt # キャッシュを削除してインストールする
 
 
 ############################################
@@ -24,6 +25,9 @@ COPY main.py /main.py
 ############################################
 # 3. rye ??[second]
 ############################################
+COPY pyproject.toml /pyproject.toml
+ENV RYE_HOME="/opt/rye"
+ENV PATH="$RYE_HOME/shims:$PATH"
 RUN curl -sSf https://rye-up.com/get | RYE_NO_AUTO_INSTALL=1 RYE_INSTALL_OPTION="--yes" bash
 RUN rye sync --no-dev --no-lock
 RUN . .venv/bin/activate
