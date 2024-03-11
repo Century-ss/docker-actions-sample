@@ -6,7 +6,7 @@ FROM python:3.10.1-buster AS build
 COPY main.py /main.py
 
 ############################################
-# 1. pip 28[second]
+# 1. pip 30[second]
 ############################################
 COPY requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
@@ -32,10 +32,3 @@ ENTRYPOINT ["python3", "/main.py"]
 # RUN curl -sSf https://rye-up.com/get | RYE_NO_AUTO_INSTALL=1 RYE_INSTALL_OPTION="--yes" bash
 # RUN rye sync --no-dev --no-lock
 # ENTRYPOINT ["/.venv/bin/python", "/main.py"]
-
-############################################
-# Tips
-############################################
-# ENTRYPOINT ["/main.py"]で実行するときは、以下のエラーが出るため、「RUN chmod +x main.py」で直前に権限を与える必要がある
-# docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed:
-# runc create failed: unable to start container process: exec: "/main.py": permission denied: unknown.
